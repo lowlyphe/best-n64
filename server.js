@@ -3,7 +3,7 @@ import cors from 'cors';
 const app = express();
 import dotenv from 'dotenv'
 dotenv.config();
-import * as pg from 'pg';
+import pg from 'pg';
 
 
 app.use(express.static('./client')) ;
@@ -18,7 +18,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
-const pool = new pg({
+const pool = new pg.Pool({
   connectionString: DATABASE_URL,
   ssl: NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
@@ -32,11 +32,21 @@ app.get('/api/games', (req,res) => {
   
 })
 
+app.get('api/result', (req,res) => {
+  pool.query('SELECT * FROM games ORDER BY rating DESC').then(() => {
+    res.set(200).type('applicaiton/json').send(data.rows)
+  })
+})
+
 
 app.patch('/api/games', (req,res) => {
   let path = req.body.path;
-  console.log(path)
-  res.send('ok')
+  console.log(req.body.path)
+  pool.query(`UPDATE games SET rating = rating + 1 WHERE path = '${path}'`).then(() => {
+    res.set(200).type('text/plain').send('Updated')
+  }).catch((err) => {
+    console.log(err)
+  })
 })
 
 

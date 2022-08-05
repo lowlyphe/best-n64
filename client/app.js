@@ -1,5 +1,3 @@
-const { json } = require("express");
-
 const $game1 = $('.game1');
 const $name1 = $('.title1');
 const $year1 = $('.year1');
@@ -15,7 +13,6 @@ $(document).ready(() => {
     $.get('/api/games', (data) => {
         console.log(data)
         let { id, name, path, publisher, year } = data[0];
-        
         $name1.text(name);
         $game1.attr('src', path);
         $publisher1.text(publisher);
@@ -34,14 +31,22 @@ $(document).ready(() => {
 
 $game1.click(() => {
     let path = $game1.attr('src')
-    let game = {
-        "path" : `"${path}"`
-    }
     $.ajax({
-        type: "PATCH",
+        type: 'PATCH',
         url: "/api/games",
-        body: `"${game}"`,
-        dataType: json 
+        data: JSON.stringify({"path": path}),
+        success: res=> console.log(res),
+        contentType: "application/json"
     })
-    console.log(game)
+})
+
+$game2.click(() => {
+    let path = $game2.attr('src')
+    $.ajax({
+        type: 'PATCH',
+        url: "/api/games",
+        data: JSON.stringify({"path": path}),
+        success: res=> console.log(res),
+        contentType: "application/json"
+    })
 })
