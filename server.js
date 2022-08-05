@@ -1,12 +1,14 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors';
 const app = express();
-require("dotenv").config();
-const pg = require('pg');
-const { application } = require('express');
+import dotenv from 'dotenv'
+dotenv.config();
+import * as pg from 'pg';
+
 
 app.use(express.static('./client')) ;
 app.use(cors());
+app.use(express.json());
 
 const { DATABASE_URL, NODE_ENV, PORT } = process.env;
 
@@ -16,7 +18,7 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min)
 }
 
-const pool = new pg.Pool({
+const pool = new pg({
   connectionString: DATABASE_URL,
   ssl: NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
@@ -30,8 +32,11 @@ app.get('/api/games', (req,res) => {
   
 })
 
-app.post('/api/games', (req,res) => {
-  pool.query('UPDATE')
+
+app.patch('/api/games', (req,res) => {
+  let path = req.body.path;
+  console.log(path)
+  res.send('ok')
 })
 
 

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "platform to let users vote on the best n64 game",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "prod": "nodemon server.js",
     "watch": "npx tailwindcss -i ./input.css -o ./client/output.css --watch",

@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS games;
 CREATE TABLE games(
     id serial,
-    Name VARCHAR(48) NOT NULL,
-    Publisher VARCHAR(23) NOT NULL,
-    Year      INTEGER  NOT NULL
+    name VARCHAR(48) NOT NULL,
+    publisher VARCHAR(23) NOT NULL,
+    year      INTEGER  NOT NULL,
+    path text NOT NULL,
+    rating integer NOT NULL
 );
