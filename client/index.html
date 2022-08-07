@@ -18,55 +18,66 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap");
     </style>
-    <script src="app.js" async defer></script>
+    <script src="app.js" defer></script>
   </head>
-  <div
-    class="ldBar"
-    data-value="100"
-    data-type="fill"
-    data-img="./assets/nintendo-64-2-logo-svg-vector.svg"
-    data-img-size="100,100"
-  ></div>
-  <body class="bg-black flex flex-col">
-    <header class="text-white text-4xl mb-48 text-center mt-6">
-      <h1>Rate N64 Games</h1>
-    </header>
-    <section class="flex justify-center mx-auto w-3/4">
-      <div>
-        <div class="overflow-hidden h-96">
-          <img class="game1 -rotate-90 w-full h-auto mt-48 hover:scale-110" />
-        </div>
-        <div class="flex flex-col text-white text-center mt-4">
-          <p class="title1"></p>
-          <p class="publisher1"></p>
-          <p class="year1"></p>
-        </div>
-      </div>
 
-      <div class="flex flex-col justify-center">
-        <p class="text-2xl text-white">OR</p>
-      </div>
-      <div>
-        <div class="overflow-hidden h-96">
-          <img
-            class="game2 -rotate-90 w-100 mt-48 hover:scale-110"
-            src="#"
-            alt=""
-          />
+  <main class="relative">
+    <div
+      class="absolute flex justify-center items-center w-screen h-full bg-black z-10"
+      id="cover"
+    >
+      <div
+        class="ldBar"
+        data-value="100"
+        data-type="fill"
+        data-img="./assets/nintendo-64-2-logo-svg-vector.svg"
+        data-img-size="100,100"
+      ></div>
+    </div>
+    <body class="bg-black flex flex-col">
+      <header class="text-white text-4xl mb-0 md:mb-48 text-center mt-6">
+        <h1>Rate N64 Games</h1>
+      </header>
+      <section
+        class="flex flex-col md:flex-row items-center md:justify-center mx-auto w-3/4"
+      >
+        <div>
+          <div class="overflow-hidden h-48 md:h-96">
+            <img
+              class="game1 -rotate-90 w-full h-auto mt-24 md:mt-48 hover:scale-110"
+            />
+          </div>
+          <div class="flex flex-col text-white text-center mt-4">
+            <p class="title1"></p>
+            <p class="publisher1"></p>
+            <p class="year1"></p>
+          </div>
         </div>
-        <div class="flex flex-col text-white text-center mt-4">
-          <p class="title2"></p>
-          <p class="publisher2"></p>
-          <p class="year2"></p>
+        <div class="flex flex-col items-center justify-center">
+          <p class="text-2xl text-white mt-12 md:mt-0">OR</p>
         </div>
-      </div>
-    </section>
-    <section>
-      <div class="text-center mt-12">
-        <a href="results.html">
-          <h2 class="text-white text-4xl">View Results</h2>
-        </a>
-      </div>
-    </section>
-  </body>
+        <div>
+          <div class="overflow-hidden h-48 md:h-96">
+            <img
+              class="game2 -rotate-90 w-100 mt-24 md:mt-48 hover:scale-110"
+              src="#"
+              alt=""
+            />
+          </div>
+          <div class="flex flex-col text-white text-center mt-4">
+            <p class="title2"></p>
+            <p class="publisher2"></p>
+            <p class="year2"></p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="text-center mt-12">
+          <a href="results.html">
+            <h2 class="text-white text-4xl">View Results</h2>
+          </a>
+        </div>
+      </section>
+    </body>
+  </main>
 </html>

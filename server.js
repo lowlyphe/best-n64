@@ -12,10 +12,12 @@ app.use(express.json());
 
 const { DATABASE_URL, NODE_ENV, PORT } = process.env;
 
-function getRandomInt(min, max, exclude) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min)
+const random = (quantity, max) =>{
+  const set = new Set()
+  while(set.size < quantity) {
+    set.add(Math.floor(Math.random() * max) + 1)
+  }
+  return set
 }
 
 const pool = new pg.Pool({
@@ -24,8 +26,9 @@ const pool = new pg.Pool({
 });
 
 app.get('/api/games', (req,res) => {
-  let first = getRandomInt(1, 296);
-  let second = getRandomInt(1, 296);
+  const randomSet = random(2, 297);
+  const [first] = randomSet;
+  const [, second] = randomSet;
   pool.query('SELECT * FROM games WHERE id in ($1, $2)', [first, second]).then((data) => {
     res.set(200).type('applicaiton/json').send(data.rows)
   })

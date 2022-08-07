@@ -22,12 +22,25 @@
     <header class="mx-auto text-center mt-8">
       <h1 class="text-white text-4xl">Results</h1>
     </header>
-    <section class="mx-auto mt-8">
-      <div
-        class="results flex flex-col mx-auto border border-solid border-white-200 w-3/4"
+    <section class="flex justify-center mx-auto mt-8">
+      <table
+        class="table-auto border border-solid border-white-200 text-white w-3/4"
       >
-        <div class="results"></div>
-      </div>
+        <thead class="border border-solid border-white-200">
+          <tr>
+            <th class="border border-solid border-white-200">Name</th>
+            <th class="border border-solid border-white-200">Publisher</th>
+            <th class="border border-solid border-white-200">Year</th>
+            <th class="hidden md:block border border-solid border-white-200">
+              Box Art
+            </th>
+            <th class="border border-solid border-white-200">Rating</th>
+          </tr>
+        </thead>
+        <tbody id="table">
+          <tr></tr>
+        </tbody>
+      </table>
     </section>
   </body>
 </html>

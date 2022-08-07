@@ -7,6 +7,9 @@ const $name2 = $('.title2');
 const $year2 = $('.year2');
 const $publisher2 = $('.publisher2');
 
+
+
+
 const getGame = () => {
     $.get('/api/games', (data) => {
         console.log(data)
@@ -27,9 +30,24 @@ const getGame = () => {
     })
 }
 
+
+
 $(document).ready(() => {
     getGame();
+    
 })
+
+$(window).on('load', () => {
+    
+})
+
+function newW()
+{
+    $('#cover').fadeOut(200)
+}
+setTimeout(newW, 2000);
+
+
 
 $game1.click(() => {
     let path = $game1.attr('src')

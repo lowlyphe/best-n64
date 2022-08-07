@@ -8,7 +8,7 @@ CREATE TABLE games(
     rating integer NOT NULL
 );
 
-INSERT INTO games(name, publisher, year, path, rating) VALUES ('007: GoldenEye','Nintendo',1997, './assets/label_n64_007goldeneye_eu.jpg', 0);
+INSERT INTO games(name, publisher, year, path, rating) VALUES ('007: GoldenEye','Nintendo',1997, './assets/n64_goldeneye.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('007: The World Is Not Enough','Electronic Arts',2000, './assets/n64_007-worldisnotenough.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('1080 Snowboarding','Nintendo',1998, './assets/n64_1080snowboarding-alt.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('A Bus Life','Activision',1999, './assets/n64_abugslife.jpg', 0);
@@ -116,7 +116,7 @@ INSERT INTO games(name, publisher, year, path, rating) VALUES ('International Tr
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Jeopardy!','GameTek',1998, './assets/n64_jeopardy.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Jeremy McGrath Supercross 2000','Acclaim',2000, './assets/n64_jeremymcgsupercross2000.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Jet Force Gemini','Rare',1999, './assets/n64_jetforcegeminintsc.jpg', 0);
-INSERT INTO games(name, publisher, year, path, rating) VALUES ('John Romeros Daikatana','Kemco',2000, './assets/n64_john-romero-s-daikatana.jpg', 0);
+INSERT INTO games(name, publisher, year, path, rating) VALUES ('John Romeros Daikatana','Kemco',2000, './assets/n64_daikatana.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Ken Griffey Jr.s Slugfest','Nintendo',1999, './assets/n64_kengriffeyjrslugfest.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Killer Instinct Gold','Nintendo',1996, './assets/n64_killerinstinctgold.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Kirby 64: The Crystal Shards','Nintendo',2000, './assets/n64_kirby64thecrystalshards.jpg', 0);
