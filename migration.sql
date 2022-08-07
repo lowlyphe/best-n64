@@ -283,7 +283,7 @@ INSERT INTO games(name, publisher, year, path, rating) VALUES ('Vigilante 8: 2nd
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Virtual Chess 64','Titus Software',1998, './assets/n64_virtualchess64.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Virtual Pool 64','Crave Entertainment',1998, './assets/n64_virtualpool64.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Waialae Country Club: True Golf Classics','Nintendo',1998, './assets/n64_waialaecountryclubgolf.jpg', 0);
-INSERT INTO games(name, publisher, year, path, rating) VALUES ('War Gods','Midway Games',1997, './assets/n64_waialaecountryclubgolf.jpg', 0);
+INSERT INTO games(name, publisher, year, path, rating) VALUES ('War Gods','Midway Games',1997, './assets/n64_wargods.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Wave Race 64','Nintendo',1996, './assets/n64_waverace64.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Wayne Gretzkys 3D Hockey','Midway Games',1996, './assets/n64_waynegretzkys3dhockey.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Wayne Gretzkys 3D Hockey 98','Midway Games',1997, './assets/n64_waynegretzkys3dhockey98.jpg', 0);

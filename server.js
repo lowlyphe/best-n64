@@ -12,7 +12,7 @@ app.use(express.json());
 
 const { DATABASE_URL, NODE_ENV, PORT } = process.env;
 
-function getRandomInt(min, max) {
+function getRandomInt(min, max, exclude) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min)
@@ -32,8 +32,8 @@ app.get('/api/games', (req,res) => {
   
 })
 
-app.get('api/result', (req,res) => {
-  pool.query('SELECT * FROM games ORDER BY rating DESC').then(() => {
+app.get('/api/results', (req,res) => {
+  pool.query('SELECT * FROM games ORDER BY rating DESC').then((data) => {
     res.set(200).type('applicaiton/json').send(data.rows)
   })
 })

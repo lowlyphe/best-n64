@@ -7,9 +7,7 @@ const $name2 = $('.title2');
 const $year2 = $('.year2');
 const $publisher2 = $('.publisher2');
 
-
-
-$(document).ready(() => {
+const getGame = () => {
     $.get('/api/games', (data) => {
         console.log(data)
         let { id, name, path, publisher, year } = data[0];
@@ -27,6 +25,10 @@ $(document).ready(() => {
         $year2.text(year2);
 
     })
+}
+
+$(document).ready(() => {
+    getGame();
 })
 
 $game1.click(() => {
@@ -38,6 +40,7 @@ $game1.click(() => {
         success: res=> console.log(res),
         contentType: "application/json"
     })
+    getGame();
 })
 
 $game2.click(() => {
@@ -49,4 +52,5 @@ $game2.click(() => {
         success: res=> console.log(res),
         contentType: "application/json"
     })
+    getGame();
 })
