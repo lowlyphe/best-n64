@@ -1,4 +1,3 @@
-
 const $game1 = $('.game1');
 const $name1 = $('.title1');
 const $year1 = $('.year1');

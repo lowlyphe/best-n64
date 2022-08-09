@@ -4,30 +4,28 @@ const app = express();
 import dotenv from 'dotenv'
 dotenv.config();
 import pg from 'pg';
-import Amplify from '@aws-amplify/core';
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+
+//setting up AWS s3
+const { DATABASE_URL, NODE_ENV, PORT, BUCKET_NAME, BUCKET_REGION, AWS_ACCESS_KEY, AWS_SECRET_KEY } = process.env;
+const s3 = new S3Client ({
+  credentials: {
+    accessKeyId: AWS_ACCESS_KEY,
+    secretAccessKey:  AWS_SECRET_KEY
+  },
+  region: BUCKET_REGION
+})
 
 
+
+//middleware
 app.use(express.static('./client')) ;
 app.use(cors());
 app.use(express.json());
-app.use(() => {
-  Amplify.configure({
-    Auth: {
-      identityPoolId: 'us-east-1:a516372a-c42b-4775-bb46-d97012714d36',
-      region: 'us-east-1'
-    },
 
-    Storage: {
-      AWSS3: {
-        bucket: 'n64-poll',
-        region: 'us-east-2'
-      }
-    }
-  })
-})
 
-const { DATABASE_URL, NODE_ENV, PORT } = process.env;
-
+//get 2 random unique numbers
 const random = (quantity, max) =>{
   const set = new Set()
   while(set.size < quantity) {
@@ -36,18 +34,31 @@ const random = (quantity, max) =>{
   return set
 }
 
+//setting up pg for psql
 const pool = new pg.Pool({
   connectionString: DATABASE_URL,
   ssl: NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
 
-app.get('/api/games', (req,res) => {
+app.get('/api/games', async (req,res) => {
   const randomSet = random(2, 297);
-  const [first] = randomSet;
-  const [, second] = randomSet;
-  pool.query('SELECT * FROM games WHERE id in ($1, $2)', [first, second]).then((data) => {
-    res.set(200).type('applicaiton/json').send(data.rows)
-  })
+  const [first, second] = randomSet;
+  const data = await pool.query('SELECT * FROM games WHERE id in ($1, $2)', [first, second])
+    
+  for (let i = 0; i < data.rows; i++) {
+    const getObjectParams = {
+      Bucket: BUCKET_NAME,
+      Key: data.rows[i].path
+    }
+    const command = new GetObjectCommand(getObjectParams);
+    const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    console.log(url)
+    data.rows[i].path = url  
+  }
+    
+  res.set(200).type('applicaiton/json').send(data.rows)
+  
+ 
   
 })
 
@@ -69,6 +80,6 @@ app.patch('/api/games', (req,res) => {
 })
 
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(PORT || 3000, () => {
     console.log('You are now connected')
 })
