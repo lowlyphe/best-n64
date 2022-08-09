@@ -1,9 +1,18 @@
 const $results = $('.results')
 
+$(window).on('load', () => {
+    
+})
+
+function newW()
+{
+    $('#cover').fadeOut(200)
+}
+setTimeout(newW, 3000);
+
 
 $(document).ready(() => {
     $.get('/api/results', (data) => {
-        console.log(data)
         for (let i = 0; i < data.length; i++) {
             let name = data[i].name;
             let publisher = data[i].publisher;

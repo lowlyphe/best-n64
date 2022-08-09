@@ -12,7 +12,6 @@ const $publisher2 = $('.publisher2');
 
 const getGame = () => {
     $.get('/api/games', (data) => {
-        console.log(data)
         let { id, name, path, publisher, year } = data[0];
         $name1.text(name);
         $game1.attr('src', path);

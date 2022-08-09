@@ -13,37 +13,57 @@
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" type="text/css" href="loading-bar.css" />
+    <script type="text/javascript" src="loading-bar.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;500&display=swap");
     </style>
     <script src="results.js" async defer></script>
   </head>
-  <body class="bg-black">
+  <body
+    class="bg-black scrollbar-thumb-gray-100 scrollbar-track-darkGray scrollbar-thin relative"
+  >
+    <div
+      class="absolute flex justify-center items-center w-screen h-screen bg-black z-10"
+      id="cover"
+    >
+      <div
+        class="ldBar"
+        data-value="100"
+        data-type="fill"
+        data-img="./nintendo-64-2-logo-svg-vector.svg"
+        data-img-size="100,100"
+      ></div>
+    </div>
     <header class="mx-auto text-center mt-8">
-      <h1 class="text-white text-4xl">Results</h1>
+      <h1 class="text-white text-4xl">Top 25 Results</h1>
+      <a href="index.html">
+        <h2 class="text-white text-lg">
+          <p class="hover:text-orange-500">Back to Voting</p>
+        </h2>
+      </a>
     </header>
-    <section class="flex justify-center mx-auto mt-8">
-      <img
-        src="https://n64-poll.s3.us-east-2.amazonaws.com/assets/n64_007-worldisnotenough.jpg"
-      />
-      <table
-        class="table-auto border border-solid border-white-200 text-white w-3/4"
-      >
-        <thead class="border border-solid border-white-200">
-          <tr>
-            <th class="border border-solid border-white-200">Name</th>
-            <th class="border border-solid border-white-200">Publisher</th>
-            <th class="border border-solid border-white-200">Year</th>
-            <th class="hidden md:block border border-solid border-white-200">
-              Box Art
-            </th>
-            <th class="border border-solid border-white-200">Rating</th>
-          </tr>
-        </thead>
-        <tbody id="table">
-          <tr></tr>
-        </tbody>
-      </table>
-    </section>
+    <main>
+      <section class="flex justify-center mx-auto mt-8">
+        <table
+          class="table-auto border border-solid border-white-200 text-white w-3/4"
+        >
+          <thead class="border border-solid border-white-200">
+            <tr>
+              <th class="border border-solid border-white-200">Name</th>
+              <th class="border border-solid border-white-200">Publisher</th>
+              <th class="border border-solid border-white-200">Year</th>
+              <th class="hidden md:block border border-solid border-white-200">
+                Box Art
+              </th>
+              <th class="border border-solid border-white-200">Rating</th>
+            </tr>
+          </thead>
+          <tbody id="table">
+            <tr></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
   </body>
 </html>

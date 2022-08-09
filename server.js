@@ -40,19 +40,21 @@ const pool = new pg.Pool({
   ssl: NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
 
+
+
+
 app.get('/api/games', async (req,res) => {
   const randomSet = random(2, 297);
   const [first, second] = randomSet;
   const data = await pool.query('SELECT * FROM games WHERE id in ($1, $2)', [first, second])
     
-  for (let i = 0; i < data.rows; i++) {
+  for (let i = 0; i < data.rows.length; i++) {
     const getObjectParams = {
       Bucket: BUCKET_NAME,
       Key: data.rows[i].path
     }
     const command = new GetObjectCommand(getObjectParams);
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
-    console.log(url)
     data.rows[i].path = url  
   }
     
@@ -62,16 +64,24 @@ app.get('/api/games', async (req,res) => {
   
 })
 
-app.get('/api/results', (req,res) => {
-  pool.query('SELECT * FROM games ORDER BY rating DESC').then((data) => {
-    res.set(200).type('applicaiton/json').send(data.rows)
-  })
+app.get('/api/results', async (req,res) => {
+  const data = await pool.query('SELECT * FROM games ORDER BY rating DESC LIMIT 25');
+  for (let i = 0; i < data.rows.length; i++) {
+    const getObjectParams = {
+      Bucket: BUCKET_NAME,
+      Key: data.rows[i].path
+    }
+    const command = new GetObjectCommand(getObjectParams);
+    const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
+    data.rows[i].path = url  
+  }
+  res.set(200).type('applicaiton/json').send(data.rows)
 })
 
 
 app.patch('/api/games', (req,res) => {
-  let path = req.body.path;
-  console.log(req.body.path)
+  const match = /(?<=.com\/).*(?=\?)/g
+  let path = match.exec(req.body.path)
   pool.query(`UPDATE games SET rating = rating + 1 WHERE path = '${path}'`).then(() => {
     res.set(200).type('text/plain').send('Updated')
   }).catch((err) => {
