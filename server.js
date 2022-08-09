@@ -4,11 +4,27 @@ const app = express();
 import dotenv from 'dotenv'
 dotenv.config();
 import pg from 'pg';
+import Amplify from '@aws-amplify/core';
 
 
 app.use(express.static('./client')) ;
 app.use(cors());
 app.use(express.json());
+app.use(() => {
+  Amplify.configure({
+    Auth: {
+      identityPoolId: 'us-east-1:a516372a-c42b-4775-bb46-d97012714d36',
+      region: 'us-east-1'
+    },
+
+    Storage: {
+      AWSS3: {
+        bucket: 'n64-poll',
+        region: 'us-east-2'
+      }
+    }
+  })
+})
 
 const { DATABASE_URL, NODE_ENV, PORT } = process.env;
 
