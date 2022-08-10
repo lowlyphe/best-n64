@@ -66,7 +66,7 @@ INSERT INTO games(name, publisher, year, path, rating) VALUES ('Dark Rift','Vic 
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Deadly Arts','Konami',1998, 'n64_deadlyarts.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Destruction Derby 64','THQ',1999, 'n64_destructionderby64_au.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Diddy Kong Racing','Nintendo',1997, 'n64_diddykongracing.jpg', 0);
-INSERT INTO games(name, publisher, year, path, rating) VALUES ('Donald Duck Goin 'Qu@ckers'','Ubisoft',2000, 'n64_donaldduckgoingquackers.jpg', 0);
+INSERT INTO games(name, publisher, year, path, rating) VALUES ('Donald Duck Goin Qu@ckers','Ubisoft',2000, 'n64_donaldduckgoingquackers.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Donkey Kong 64','Nintendo',1999, 'n64_donkeykong64.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Doom 64','Midway Games',1997, 'n64_doom64.jpg', 0);
 INSERT INTO games(name, publisher, year, path, rating) VALUES ('Dr. Mario 64','Nintendo',2001, 'n64_drmario64.jpg', 0);
